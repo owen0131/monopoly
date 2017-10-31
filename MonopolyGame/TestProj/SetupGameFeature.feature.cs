@@ -133,6 +133,21 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Display Image of Board")]
+        public virtual void DisplayImageOfBoard()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Display Image of Board", ((string[])(null)));
+#line 29
+this.ScenarioSetup(scenarioInfo);
+#line 30
+ testRunner.When("Game is started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 31
+ testRunner.Then("A monopoly board is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Display Board")]
         [NUnit.Framework.TestCaseAttribute("1", "\"GO\"", null)]
         [NUnit.Framework.TestCaseAttribute("2", "\"Mediterranean Avenue\"", null)]
@@ -177,11 +192,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DisplayBoard(string location, string name, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Display Board", exampleTags);
-#line 29
+#line 33
 this.ScenarioSetup(scenarioInfo);
-#line 30
+#line 34
  testRunner.When("the board is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 31
+#line 35
  testRunner.Then(string.Format("{0} is {1}", location, name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -202,15 +217,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PlayerPicksAToken(string token, string @event, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player Picks a Token", exampleTags);
-#line 76
-this.ScenarioSetup(scenarioInfo);
-#line 77
- testRunner.When("Order is assigned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 78
- testRunner.And("Player is prompted to pick a token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 79
- testRunner.And(string.Format("Player enters {0}", token), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 80
+this.ScenarioSetup(scenarioInfo);
+#line 81
+ testRunner.When("Order is assigned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 82
+ testRunner.And("Player is prompted to pick a token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 83
+ testRunner.And(string.Format("Player enters {0}", token), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 84
  testRunner.Then(string.Format("User recieves {0}", @event), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -222,11 +237,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PlayerSelectsToken(string token, string tokensLeft, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player selects Token", exampleTags);
-#line 95
+#line 99
 this.ScenarioSetup(scenarioInfo);
-#line 96
+#line 100
  testRunner.When(string.Format("Player selects Token {0}", token), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 97
+#line 101
  testRunner.Then(string.Format("Available Tokens left are {0}", tokensLeft), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -237,13 +252,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PlaceTokensOnBoard()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place tokens on board", ((string[])(null)));
-#line 104
+#line 108
 this.ScenarioSetup(scenarioInfo);
-#line 105
+#line 109
  testRunner.When("the game is setup", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 106
+#line 110
  testRunner.Then("the board is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 107
+#line 111
  testRunner.And("All pieces are on \"go\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

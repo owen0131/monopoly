@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace TestProj
@@ -6,6 +8,40 @@ namespace TestProj
     [Binding]
     public class SetupTheGameSteps
     {
+        MonopolyGame.MainWindow win;
+        MonopolyGame.App app;
+        Thread winThread;
+
+        [Before]
+        void Setup() {
+            bool started = false;
+
+            winThread = new Thread(() => {
+                win = new MonopolyGame.MainWindow();
+                win.Closed += (sender, e) => win.Dispatcher.InvokeShutdown();
+                app = new MonopolyGame.App();
+                app.Startup += (sender, e) => started = true;
+                app.Run(win);
+                System.Windows.Threading.Dispatcher.Run();
+
+            });
+
+            winThread.SetApartmentState(ApartmentState.STA);
+            winThread.Start();
+            // wait for app to be running
+            while (started == false) { }
+        }
+
+        [After]
+        void After() {
+            if (win != null)
+                win.Close();
+            if (app != null)
+                app.Shutdown();
+            if (winThread != null)
+                winThread.Join();
+        }
+
         [When(@"I start the game")]
         public void WhenIStartTheGame()
         {
@@ -130,6 +166,16 @@ namespace TestProj
         public void ThenAllPiecesAreOn(string p0)
         {
             ScenarioContext.Current.Pending();
+        }
+
+        [When(@"Game is started")]
+        public void WhenGameIsStarted() {
+            Assert.IsTrue(app != null);
+        }
+
+        [Then(@"A monopoly board is shown")]
+        public void ThenAMonopolyBoardIsShown() {
+            //win.c
         }
     }
 }
