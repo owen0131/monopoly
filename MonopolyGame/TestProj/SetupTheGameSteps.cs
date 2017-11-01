@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
+using System.Windows.Controls;
 using TechTalk.SpecFlow;
 
 namespace TestProj
@@ -10,36 +11,22 @@ namespace TestProj
     {
         MonopolyGame.MainWindow win;
         MonopolyGame.App app;
-        Thread winThread;
 
         [Before]
         void Setup() {
-            bool started = false;
-
-            winThread = new Thread(() => {
+            var are = new AutoResetEvent(false);
+            Helpers.RunCodeAsSTA(are, () =>
+            {
                 win = new MonopolyGame.MainWindow();
-                win.Closed += (sender, e) => win.Dispatcher.InvokeShutdown();
                 app = new MonopolyGame.App();
-                app.Startup += (sender, e) => started = true;
                 app.Run(win);
-                System.Windows.Threading.Dispatcher.Run();
-
             });
-
-            winThread.SetApartmentState(ApartmentState.STA);
-            winThread.Start();
-            // wait for app to be running
-            while (started == false) { }
+            // give app time to start;
+            Thread.Sleep(2000);
         }
 
         [After]
         void After() {
-            if (win != null)
-                win.Close();
-            if (app != null)
-                app.Shutdown();
-            if (winThread != null)
-                winThread.Join();
         }
 
         [When(@"I start the game")]
@@ -170,12 +157,18 @@ namespace TestProj
 
         [When(@"Game is started")]
         public void WhenGameIsStarted() {
-            Assert.IsTrue(app != null);
+            Assert.IsTrue(win != null && app != null);
         }
 
         [Then(@"A monopoly board is shown")]
         public void ThenAMonopolyBoardIsShown() {
-            //win.c
+            MonopolyGame.controls.Board board = null;
+            app.Dispatcher.Invoke(() =>
+            {
+                board = MonopolyGame.utils.UIHelpers.FindChild<MonopolyGame.controls.Board>(win, "Board");
+            });
+
+            Assert.IsTrue(board != null);
         }
     }
 }

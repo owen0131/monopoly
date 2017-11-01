@@ -18,6 +18,32 @@ namespace MonopolyGame.controls {
     /// Interaction logic for Board.xaml
     /// </summary>
     public partial class Board : UserControl {
+        /*public static readonly DependencyProperty PlayerPosProperty = DependencyProperty.Register(
+            nameof(PlayerPos),
+            typeof(int),
+            typeof(Board),
+            new PropertyMetadata("", OnPropertyChangedStatic)
+            );
+
+        public int PlayerPos
+        {
+            get { return (int)GetValue(PlayerPosProperty); }
+            set { SetValue(PlayerPosProperty, value); }
+        }
+
+        private static void OnPropertyChangedStatic(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var instance = d as Board;
+
+            // Defer to the instance method.
+            instance?.OnPropertyChanged(d, e.Property);
+        }
+
+        private void OnPropertyChanged(DependencyObject d, DependencyProperty prop)
+        {
+            // animate ?
+        }*/
+
         public Board() {
             InitializeComponent();
         }

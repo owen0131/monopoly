@@ -8,7 +8,7 @@
         xmlns:controls="clr-namespace:MonopolyGame.controls"
         Title="MainWindow" Height="1920" Width="1080">
     <Grid>
-        <controls:Board></controls:Board>
+        <controls:Board x:Name="Board"></controls:Board>
 
     </Grid>
 </Window>
