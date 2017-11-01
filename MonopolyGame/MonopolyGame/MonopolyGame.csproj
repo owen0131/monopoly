@@ -58,11 +58,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Game.cs" />
+    <Compile Include="models\BoardPositions.cs" />
     <Compile Include="StartGameX.xaml.cs">
       <DependentUpon>StartGameX.xaml</DependentUpon>
     </Compile>
     <Compile Include="utils\BindableBase.cs" />
     <Compile Include="utils\DelegateCommand.cs" />
+    <Compile Include="utils\KeyValueList.cs" />
     <Compile Include="utils\UIHelpers.cs" />
     <Page Include="controls\Board.xaml">
       <SubType>Designer</SubType>
@@ -119,9 +121,7 @@
   <ItemGroup>
     <Resource Include="assets\MonopolyBoard.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

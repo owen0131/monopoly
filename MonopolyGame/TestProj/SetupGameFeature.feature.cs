@@ -63,6 +63,14 @@ namespace TestProj
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 3
+#line 4
+ testRunner.Given("Application is started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Start the app")]
         [NUnit.Framework.TestCaseAttribute("1", "\"Fail\"", null)]
@@ -73,15 +81,17 @@ namespace TestProj
         public virtual void StartTheApp(string players, string response, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Start the app", exampleTags);
-#line 5
-this.ScenarioSetup(scenarioInfo);
 #line 6
- testRunner.When("I start the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
 #line 7
- testRunner.And("Player is prompted for how many players", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I start the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
- testRunner.And(string.Format("They enter {0}", players), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Player is prompted for how many players", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
+ testRunner.And(string.Format("They enter {0}", players), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 10
  testRunner.Then(string.Format("User receieves {0}", response), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -92,11 +102,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GivePlayerMoney()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Give Player money", ((string[])(null)));
-#line 19
-this.ScenarioSetup(scenarioInfo);
 #line 20
- testRunner.When("Player is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
 #line 21
+ testRunner.When("Player is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 22
  testRunner.Then("Their balance is $1500", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -107,11 +119,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void VerifyBuildings()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Buildings", ((string[])(null)));
-#line 23
-this.ScenarioSetup(scenarioInfo);
 #line 24
- testRunner.When("All players are created and they receive money", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
 #line 25
+ testRunner.When("All players are created and they receive money", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 26
  testRunner.Then("The bank contains 32 houses and 12 hotels", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -122,12 +136,31 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AssignOrder()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Assign Order", ((string[])(null)));
-#line 27
-this.ScenarioSetup(scenarioInfo);
 #line 28
- testRunner.When("Number of players is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
 #line 29
+ testRunner.When("Number of players is selected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 30
  testRunner.Then("Order is randomly assigned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Display Image of Board")]
+        public virtual void DisplayImageOfBoard()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Display Image of Board", ((string[])(null)));
+#line 33
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line 34
+ testRunner.When("Game is started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 35
+ testRunner.Then("A monopoly board is shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -177,11 +210,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DisplayBoard(string location, string name, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Display Board", exampleTags);
-#line 31
+#line 37
 this.ScenarioSetup(scenarioInfo);
-#line 32
+#line 3
+this.FeatureBackground();
+#line 38
  testRunner.When("the board is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 33
+#line 39
  testRunner.Then(string.Format("{0} is {1}", location, name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -202,15 +237,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PlayerPicksAToken(string token, string @event, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player Picks a Token", exampleTags);
-#line 78
+#line 84
 this.ScenarioSetup(scenarioInfo);
-#line 79
+#line 3
+this.FeatureBackground();
+#line 85
  testRunner.When("Order is assigned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 80
+#line 86
  testRunner.And("Player is prompted to pick a token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 81
+#line 87
  testRunner.And(string.Format("Player enters {0}", token), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 82
+#line 88
  testRunner.Then(string.Format("User recieves {0}", @event), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -222,11 +259,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PlayerSelectsToken(string token, string tokensLeft, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player selects Token", exampleTags);
-#line 97
+#line 103
 this.ScenarioSetup(scenarioInfo);
-#line 98
+#line 3
+this.FeatureBackground();
+#line 104
  testRunner.When(string.Format("Player selects Token {0}", token), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 99
+#line 105
  testRunner.Then(string.Format("Available Tokens left are {0}", tokensLeft), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -237,13 +276,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PlaceTokensOnBoard()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place tokens on board", ((string[])(null)));
-#line 106
+#line 112
 this.ScenarioSetup(scenarioInfo);
-#line 107
+#line 3
+this.FeatureBackground();
+#line 113
  testRunner.When("the game is setup", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 108
+#line 114
  testRunner.Then("the board is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 109
+#line 115
  testRunner.And("All pieces are on \"go\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

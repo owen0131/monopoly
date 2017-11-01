@@ -4,20 +4,21 @@ using System.Threading;
 using System.Windows.Controls;
 using TechTalk.SpecFlow;
 using MonopolyGame;
+using MonopolyGame.models;
+
 namespace TestProj
 {
     [Binding]
     public class SetupTheGameSteps
     {
         bool m_SuccessfulStartup = false;
-        MonopolyGame.MainWindow win;
-        MonopolyGame.App app;
+        static MonopolyGame.MainWindow win;
+        static MonopolyGame.App app;
 
-        [Before]
-        void Setup() {
+        [BeforeTestRun]
+        static void Setup() {
             var are = new AutoResetEvent(false);
-            Helpers.RunCodeAsSTA(are, () =>
-            {
+            Helpers.RunCodeAsSTA(are, () => {
                 win = new MonopolyGame.MainWindow();
                 app = new MonopolyGame.App();
                 app.Run(win);
@@ -26,15 +27,22 @@ namespace TestProj
             Thread.Sleep(2000);
         }
 
-        [After]
-        void After() {
+        [AfterTestRun]
+        static void After() {
+            if (app != null) {
+                app.Dispatcher.InvokeShutdown();
+            }
+        }
+
+        [Given(@"Application is started")]
+        public void GivenApplicationIsStarted() {
+            Assert.IsTrue(app != null);
         }
 
         [When(@"I start the game")]
         public void WhenIStartTheGame()
         {
-            //Need user test
-            return;
+            Assert.IsTrue(app != null);
         }
         
         [When(@"Player is prompted for how many players")]
@@ -74,7 +82,12 @@ namespace TestProj
         [When(@"the board is displayed")]
         public void WhenTheBoardIsDisplayed()
         {
-            ScenarioContext.Current.Pending();
+            MonopolyGame.controls.Board board = null;
+            app.Dispatcher.Invoke(() => {
+                board = MonopolyGame.utils.UIHelpers.FindChild<MonopolyGame.controls.Board>(win, "Board");
+            });
+
+            Assert.IsTrue(board != null);
         }
         
         [When(@"Order is assigned")]
@@ -132,9 +145,11 @@ namespace TestProj
         }
         
         [Then(@"(.*) is ""(.*)""")]
-        public void ThenIs(int p0, string p1)
+        public void ThenIs(uint loc, string name)
         {
-            ScenarioContext.Current.Pending();
+            string val;
+            Assert.IsTrue(BoardPositions.PositionNames.TryGetValue(loc, out val));
+            Assert.IsTrue(val == name);
         }
         
         [Then(@"User recieves Success")]
@@ -152,7 +167,12 @@ namespace TestProj
         [Then(@"the board is displayed")]
         public void ThenTheBoardIsDisplayed()
         {
-            ScenarioContext.Current.Pending();
+            MonopolyGame.controls.Board board = null;
+            app.Dispatcher.Invoke(() => {
+                board = MonopolyGame.utils.UIHelpers.FindChild<MonopolyGame.controls.Board>(win, "Board");
+            });
+
+            Assert.IsTrue(board != null);
         }
         
         [Then(@"All pieces are on ""(.*)""")]

@@ -7,12 +7,6 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame.viewmodels {
 
-    class KeyValueList<TKey, TValue> : List<Tuple<TKey, TValue>> {
-        public void Add(TKey key, TValue value) {
-            Add(new Tuple<TKey, TValue>(key, value));
-        }
-    }
-
     public class BoardViewModel : BindableBase {
 
         private Tuple<int, int> playerPos;
