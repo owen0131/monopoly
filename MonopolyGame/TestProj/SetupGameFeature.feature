@@ -26,6 +26,10 @@ Scenario: Assign Order
 	When Number of players is selected
 	Then Order is randomly assigned
 
+Scenario: Display Image of Board
+	When Game is started
+	Then A monopoly board is shown
+
 Scenario Outline: Display Board
 	When the board is displayed
 	Then <Location> is <Name>

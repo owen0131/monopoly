@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonopolyGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:controls="clr-namespace:MonopolyGame.controls"
+        Title="MainWindow" Height="1920" Width="1080">
     <Grid>
-        
+        <controls:Board x:Name="Board"></controls:Board>
+
     </Grid>
 </Window>

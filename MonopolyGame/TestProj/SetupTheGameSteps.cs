@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Threading;
+using System.Windows.Controls;
 using TechTalk.SpecFlow;
 using MonopolyGame;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -7,7 +10,30 @@ namespace TestProj
     [Binding]
     public class SetupTheGameSteps
     {
+<<<<<<< HEAD
         bool m_SuccessfulStartup = false;
+=======
+        MonopolyGame.MainWindow win;
+        MonopolyGame.App app;
+
+        [Before]
+        void Setup() {
+            var are = new AutoResetEvent(false);
+            Helpers.RunCodeAsSTA(are, () =>
+            {
+                win = new MonopolyGame.MainWindow();
+                app = new MonopolyGame.App();
+                app.Run(win);
+            });
+            // give app time to start;
+            Thread.Sleep(2000);
+        }
+
+        [After]
+        void After() {
+        }
+
+>>>>>>> 9a69cd274213bf94bd031a25f924e13c94afb8cd
         [When(@"I start the game")]
         public void WhenIStartTheGame()
         {
@@ -137,6 +163,22 @@ namespace TestProj
         public void ThenAllPiecesAreOn(string p0)
         {
             ScenarioContext.Current.Pending();
+        }
+
+        [When(@"Game is started")]
+        public void WhenGameIsStarted() {
+            Assert.IsTrue(win != null && app != null);
+        }
+
+        [Then(@"A monopoly board is shown")]
+        public void ThenAMonopolyBoardIsShown() {
+            MonopolyGame.controls.Board board = null;
+            app.Dispatcher.Invoke(() =>
+            {
+                board = MonopolyGame.utils.UIHelpers.FindChild<MonopolyGame.controls.Board>(win, "Board");
+            });
+
+            Assert.IsTrue(board != null);
         }
     }
 }
