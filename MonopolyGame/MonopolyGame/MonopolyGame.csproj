@@ -57,8 +57,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="controls\TokenPicker.xaml.cs">
+      <DependentUpon>TokenPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="models\BoardPositions.cs" />
+    <Compile Include="models\TokenMapping.cs" />
     <Compile Include="StartGameX.xaml.cs">
       <DependentUpon>StartGameX.xaml</DependentUpon>
     </Compile>
@@ -66,7 +70,12 @@
     <Compile Include="utils\DelegateCommand.cs" />
     <Compile Include="utils\KeyValueList.cs" />
     <Compile Include="utils\UIHelpers.cs" />
+    <Compile Include="viewmodels\GameViewModel.cs" />
     <Page Include="controls\Board.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="controls\TokenPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -81,7 +90,6 @@
     <Compile Include="controls\Board.xaml.cs">
       <DependentUpon>Board.xaml</DependentUpon>
     </Compile>
-    <Compile Include="viewmodels\BoardViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -121,7 +129,9 @@
   <ItemGroup>
     <Resource Include="assets\MonopolyBoard.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="assets\monoptokens.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -224,16 +224,16 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Player Picks a Token")]
-        [NUnit.Framework.TestCaseAttribute("\"Battleship\"", "Success", null)]
-        [NUnit.Framework.TestCaseAttribute("\"Hat\"", "Success", null)]
-        [NUnit.Framework.TestCaseAttribute("\"T-Rex\"", "Success", null)]
-        [NUnit.Framework.TestCaseAttribute("\"Cat\"", "Success", null)]
-        [NUnit.Framework.TestCaseAttribute("\"Car\"", "Success", null)]
-        [NUnit.Framework.TestCaseAttribute("\"Duck\"", "Success", null)]
-        [NUnit.Framework.TestCaseAttribute("\"Penguin\"", "Success", null)]
-        [NUnit.Framework.TestCaseAttribute("\"Dog\"", "Success", null)]
-        [NUnit.Framework.TestCaseAttribute("\"NotDog\"", "Fail", null)]
-        [NUnit.Framework.TestCaseAttribute("\"\"", "Fail", null)]
+        [NUnit.Framework.TestCaseAttribute("\"Battleship\"", "\"Success\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"Hat\"", "\"Success\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"Thimble\"", "\"Success\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"WheelBarrow\"", "\"Success\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"Car\"", "\"Success\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"Shoe\"", "\"Success\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"Iron\"", "\"Success\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"Dog\"", "\"Success\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"NotDog\"", "\"Fail\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"\"", "\"Fail\"", null)]
         public virtual void PlayerPicksAToken(string token, string @event, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player Picks a Token", exampleTags);
@@ -255,7 +255,7 @@ this.FeatureBackground();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Player selects Token")]
-        [NUnit.Framework.TestCaseAttribute("\"Battleship\"", "\"Hat, T-Rex, Cat, Car, Duck, Penguin, Dog\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"Battleship\"", "\"Hat, Thimble, WheelBarrow, Car, Shoe, Iron, Dog\"", null)]
         public virtual void PlayerSelectsToken(string token, string tokensLeft, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player selects Token", exampleTags);

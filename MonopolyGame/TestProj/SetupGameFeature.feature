@@ -88,17 +88,17 @@ Scenario Outline: Player Picks a Token
 	Then User recieves <Event>
 
 	Examples:
-	| Token        | Event   |
-	| "Battleship" | Success |
-	| "Hat"        | Success |
-	| "T-Rex"      | Success |
-	| "Cat"        | Success |
-	| "Car"        | Success |
-	| "Duck"       | Success |
-	| "Penguin"    | Success |
-	| "Dog"        | Success |
-	| "NotDog"     | Fail    |
-	| ""           | Fail    |
+	| Token         | Event   |
+	| "Battleship"  | "Success" |
+	| "Hat"         | "Success" |
+	| "Thimble"     | "Success" |
+	| "WheelBarrow" | "Success" |
+	| "Car"         | "Success" |
+	| "Shoe"        | "Success" |
+	| "Iron"        | "Success" |
+	| "Dog"         | "Success" |
+	| "NotDog"      | "Fail"    |
+	| ""            | "Fail"    |
 
 Scenario Outline: Player selects Token
 	When Player selects Token <Token>
@@ -106,7 +106,7 @@ Scenario Outline: Player selects Token
 
 	Examples:
 	| Token        | TokensLeft                                 |
-	| "Battleship" | "Hat, T-Rex, Cat, Car, Duck, Penguin, Dog" |
+	| "Battleship" | "Hat, Thimble, WheelBarrow, Car, Shoe, Iron, Dog" |
 
 
 Scenario: Place tokens on board

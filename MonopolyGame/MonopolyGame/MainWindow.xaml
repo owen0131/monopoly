@@ -6,9 +6,20 @@
         xmlns:local="clr-namespace:MonopolyGame"
         mc:Ignorable="d"
         xmlns:controls="clr-namespace:MonopolyGame.controls"
-        Title="MainWindow" Height="1920" Width="1080">
+        xmlns:viewmodels="clr-namespace:MonopolyGame.viewmodels"
+        d:DataContext="{d:DesignInstance viewmodels:GameViewModel}"
+        Title="MainWindow" Height="1080" Width="1920"
+        x:Name="mainWindow">
+    <Window.DataContext>
+        <viewmodels:GameViewModel/>
+    </Window.DataContext>
     <Grid>
-        <controls:Board x:Name="Board"></controls:Board>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <controls:Board Grid.Column="0" x:Name="Board"></controls:Board>
+        <controls:TokenPicker Grid.Column="1" x:Name="TokenPicker" TokenClick="{Binding TokenSelect, Mode=OneWay}" PlayerStr="{Binding PlayerStr, Mode=TwoWay}" ></controls:TokenPicker>
 
     </Grid>
 </Window>

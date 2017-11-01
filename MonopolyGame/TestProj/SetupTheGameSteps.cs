@@ -5,6 +5,9 @@ using System.Windows.Controls;
 using TechTalk.SpecFlow;
 using MonopolyGame;
 using MonopolyGame.models;
+using System.Windows;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace TestProj
 {
@@ -93,19 +96,37 @@ namespace TestProj
         [When(@"Order is assigned")]
         public void WhenOrderIsAssigned()
         {
-            ScenarioContext.Current.Pending();
+            // todo:
         }
         
         [When(@"Player is prompted to pick a token")]
         public void WhenPlayerIsPromptedToPickAToken()
         {
-            ScenarioContext.Current.Pending();
+            MonopolyGame.controls.TokenPicker tp = null;
+            app.Dispatcher.Invoke(() => {
+                tp = MonopolyGame.utils.UIHelpers.FindChild<MonopolyGame.controls.TokenPicker>(win, "TokenPicker");
+            });
+
+            Assert.IsTrue(tp != null);
         }
         
         [When(@"Player enters ""(.*)""")]
         public void WhenPlayerEnters(string p0)
         {
-            ScenarioContext.Current.Pending();
+            //Window tp = null;
+            MonopolyGame.viewmodels.GameViewModel vm;
+            bool passed = false;
+            app.Dispatcher.Invoke(() => {
+                //tp = MonopolyGame.utils.UIHelpers.FindChild<Window>(win, "mainWindow");
+                vm = win.DataContext as MonopolyGame.viewmodels.GameViewModel;
+                if (vm.TokenSelect == null) return;
+                if (TokenMapping.TokenList.Contains(p0))
+                    vm.TokenSelect.Execute(TokenMapping.TokenList.IndexOf(p0));
+                else vm.TokenSelect.Execute(TokenMapping.TokenList.Count + 1);
+                passed = true;
+            });
+
+            Assert.IsTrue(passed);
         }
         
         [When(@"Player selects Token ""(.*)""")]
@@ -118,12 +139,6 @@ namespace TestProj
         public void WhenTheGameIsSetup()
         {
             ScenarioContext.Current.Pending();
-        }
-        
-        [Then(@"User receieves Fail")]
-        public void ThenUserReceievesFail()
-        {
-            Assert.IsTrue(m_SuccessfulStartup == false);
         }
         
         [Then(@"Their balance is \$(.*)")]
@@ -152,18 +167,38 @@ namespace TestProj
             Assert.IsTrue(val == name);
         }
         
-        [Then(@"User recieves Success")]
-        public void ThenUserRecievesSuccess()
-        {
-            Assert.IsTrue(m_SuccessfulStartup);
-        }
-        
         [Then(@"Available Tokens left are ""(.*)""")]
         public void ThenAvailableTokensLeftAre(string p0)
         {
             ScenarioContext.Current.Pending();
         }
-        
+
+        [Then(@"User recieves ""(.*)""")]
+        public void ThenUserRecieves(string p0) {
+            Label tm = null;
+            string content = "";
+            app.Dispatcher.Invoke(() => {
+                tm = MonopolyGame.utils.UIHelpers.FindChild<Label>(win, "TokenMessage");
+                content = tm.Content as string;
+            });
+            Assert.IsTrue(tm != null);
+            if (p0 == "Success") {
+                Assert.IsTrue(content != "");
+            }
+            else if (p0 == "Fail") {
+                Assert.IsTrue(content == "");
+            }
+            else {
+                Assert.Fail();
+            }
+
+        }
+        [Then(@"User receieves ""(.*)""")]
+        public void ThenUserReceieves(string p0) {
+            ScenarioContext.Current.Pending();
+
+        }
+
         [Then(@"the board is displayed")]
         public void ThenTheBoardIsDisplayed()
         {
