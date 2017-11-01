@@ -1,27 +1,34 @@
 ﻿using System;
 using TechTalk.SpecFlow;
-
+using MonopolyGame;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestProj
 {
     [Binding]
     public class SetupTheGameSteps
     {
+        bool m_SuccessfulStartup = false;
         [When(@"I start the game")]
         public void WhenIStartTheGame()
         {
-            ScenarioContext.Current.Pending();
+            //Need user test
+            return;
         }
         
         [When(@"Player is prompted for how many players")]
         public void WhenPlayerIsPromptedForHowManyPlayers()
         {
-            ScenarioContext.Current.Pending();
+            //Need user test
+            return;
         }
         
         [When(@"They enter (.*)")]
-        public void WhenTheyEnter(int p0)
+        public void WhenTheyEnter(int a_NumberOfPlayers)
         {
-            ScenarioContext.Current.Pending();
+            if(Game.ValidateNumberOfPlayers(a_NumberOfPlayers.ToString()))
+            {
+                m_SuccessfulStartup = true;
+            }
         }
         
         [When(@"Player is created")]
@@ -81,7 +88,7 @@ namespace TestProj
         [Then(@"User receieves Fail")]
         public void ThenUserReceievesFail()
         {
-            ScenarioContext.Current.Pending();
+            Assert.IsTrue(m_SuccessfulStartup == false);
         }
         
         [Then(@"Their balance is \$(.*)")]
@@ -111,7 +118,7 @@ namespace TestProj
         [Then(@"User recieves Success")]
         public void ThenUserRecievesSuccess()
         {
-            ScenarioContext.Current.Pending();
+            Assert.IsTrue(m_SuccessfulStartup);
         }
         
         [Then(@"Available Tokens left are ""(.*)""")]

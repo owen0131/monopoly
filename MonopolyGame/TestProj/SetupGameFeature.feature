@@ -8,11 +8,11 @@ Scenario Outline: Start the app
 	
 	Examples: 
 	| Players | Response |
-	| 1       | Fail     |
-	| 2       | Success  |
-	| 6       | Success  |
-	| 7       | Fail     |
-	| 0       | Fail     |
+	| 1       | "Fail"     |
+	| 2       | "Success"  |
+	| 6       | "Success"  |
+	| 7       | "Fail"     |
+	| 0       | "Fail"     |
 
 Scenario: Give Player money 
 	When Player is created 

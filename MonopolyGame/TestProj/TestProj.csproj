@@ -81,6 +81,12 @@
       <LastGenOutput>SetupGameFeature.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonopolyGame\MonopolyGame.csproj">
+      <Project>{563ea25d-23d2-49a2-8a83-138ef9084807}</Project>
+      <Name>MonopolyGame</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
