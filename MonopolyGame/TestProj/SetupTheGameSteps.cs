@@ -4,15 +4,12 @@ using System.Threading;
 using System.Windows.Controls;
 using TechTalk.SpecFlow;
 using MonopolyGame;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TestProj
 {
     [Binding]
     public class SetupTheGameSteps
     {
-<<<<<<< HEAD
         bool m_SuccessfulStartup = false;
-=======
         MonopolyGame.MainWindow win;
         MonopolyGame.App app;
 
@@ -33,7 +30,6 @@ namespace TestProj
         void After() {
         }
 
->>>>>>> 9a69cd274213bf94bd031a25f924e13c94afb8cd
         [When(@"I start the game")]
         public void WhenIStartTheGame()
         {

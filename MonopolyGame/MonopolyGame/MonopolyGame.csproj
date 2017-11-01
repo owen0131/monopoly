@@ -57,13 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< HEAD
     <Compile Include="Game.cs" />
-    <Compile Include="program.cs" />
     <Compile Include="StartGameX.xaml.cs">
       <DependentUpon>StartGameX.xaml</DependentUpon>
     </Compile>
-=======
     <Compile Include="utils\BindableBase.cs" />
     <Compile Include="utils\DelegateCommand.cs" />
     <Compile Include="utils\UIHelpers.cs" />
@@ -71,7 +68,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
->>>>>>> 9a69cd274213bf94bd031a25f924e13c94afb8cd
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

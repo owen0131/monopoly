@@ -1,4 +1,6 @@
-﻿Feature: Setup the game
+﻿  
+
+Feature: Setup the game
 
 Scenario Outline: Start the app
 	When I start the game
@@ -25,10 +27,6 @@ Scenario: Verify Buildings
 Scenario: Assign Order
 	When Number of players is selected
 	Then Order is randomly assigned
-
-Scenario: Display Image of Board
-	When Game is started
-	Then A monopoly board is shown
 
 Scenario Outline: Display Board
 	When the board is displayed
